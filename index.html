@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#141826">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icons/icon-192.png" sizes="192x192">
+  <title>ВЭФ 2025 — Инвентарь (PWA)</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="brand-logo"><img src="icons/icon-192.png" alt="logo"></div>
+        <h1>ВЭФ 2025 — Инвентарь</h1>
+      </div>
+      <div class="toolbar">
+        <button id="btn-install" class="btn-secondary">Установить как приложение</button>
+        <button id="btn-export" class="btn">Экспорт JSON</button>
+        <label class="btn-secondary" for="file-import" style="cursor:pointer">Импорт JSON</label>
+        <input id="file-import" type="file" accept="application/json" style="display:none">
+        <button id="btn-clear-cache" class="btn-danger">Сброс offline</button>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="search">
+          <input type="text" id="search" placeholder="Поиск по объектам…">
+        </div>
+        <div id="objects" class="grid-objects" aria-live="polite"></div>
+      </div>
+
+      <div class="card">
+        <div class="search">
+          <input type="text" id="filter" placeholder="Фильтр по таблице (любой столбец)…">
+          <button id="btn-add-row" class="btn-success">Добавить строку</button>
+          <button id="btn-add-col" class="btn-small btn-secondary">Добавить столбец</button>
+          <button id="btn-rename-col" class="btn-small btn-secondary">Переименовать столбец</button>
+          <button id="btn-del-col" class="btn-small btn-danger">Удалить столбец</button>
+          <button id="btn-view-toggle" class="btn-small btn-secondary">Плитки/Таблица</button>
+          <button id="btn-object-col" class="btn-small btn-secondary">Выбрать столбец объектов</button>
+        </div>
+        <div class="table-wrap">
+          <table id="data-table" aria-describedby="caption">
+            <thead id="thead"></thead>
+            <tbody id="tbody"></tbody>
+          </table>
+        </div>
+        <div class="footer">
+          <span>Подсказки: двойной клик по ячейке — редактировать. <span class="kbd">Ctrl+S</span> — сохранить.</span>
+          <span class="small">Все изменения сохраняются локально (IndexedDB) и доступны офлайн.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Модал комментариев по объекту -->
+  <div id="modal-backdrop" class="modal-backdrop">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-header">
+        <h3 id="modal-title">Комментарии объекта</h3>
+        <div class="modal-actions">
+          <button id="btn-save-comment" class="btn">Сохранить</button>
+          <button id="btn-close-modal" class="btn-secondary">Закрыть</button>
+        </div>
+      </div>
+      <div>
+        <textarea id="comment-text" placeholder="Комментарии…"></textarea>
+        <div class="small install-hint">
+          Комментарии закрепляются за выбранным объектом и сохраняются офлайн в вашем браузере.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    if('serviceWorker' in navigator){
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./service-worker.js');
+      });
+    }
+  </script>
+</body>
+</html>

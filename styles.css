@@ -1,0 +1,81 @@
+
+:root{
+  --bg:#0f1320;
+  --card:#151a2c;
+  --muted:#7b87a3;
+  --text:#e8ebff;
+  --accent:#6c7cff;
+  --accent-2:#22c55e;
+  --danger:#ef4444;
+  --warning:#f59e0b;
+  --border:#1f2640;
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+}
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans","Liberation Sans",sans-serif;
+  background:linear-gradient(180deg,#0b0f1a 0%,#0f1320 40%);
+  color:var(--text);
+}
+
+.container{max-width:1200px;margin:0 auto;padding:24px}
+.header{display:flex;align-items:center;gap:16px;justify-content:space-between;margin-bottom:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand-logo{width:40px;height:40px;border-radius:12px;background:#141826;display:grid;place-items:center;box-shadow:var(--shadow);border:1px solid var(--border)}
+.brand-logo img{width:26px;height:26px}
+.brand h1{font-size:18px;margin:0;font-weight:700}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap}
+button,.btn{
+  background:var(--accent);border:none;color:white;padding:10px 14px;border-radius:12px;cursor:pointer;font-weight:600;
+  box-shadow:var(--shadow);border:1px solid #6673ff4d;transition:transform .05s ease,opacity .2s ease;user-select:none
+}
+button:hover{opacity:.95}
+button:active{transform:translateY(1px)}
+.btn-secondary{background:#1b2135;border:1px solid var(--border);color:var(--text)}
+.btn-danger{background:#ef4444}
+.btn-success{background:#22c55e}
+.btn-small{padding:8px 10px;font-size:13px;border-radius:10px}
+
+.grid{display:grid;grid-template-columns:320px 1fr;gap:16px}
+@media (max-width:980px){.grid{grid-template-columns:1fr}}
+
+.card{background:linear-gradient(180deg,#151a2c,#12172a);border:1px solid var(--border);border-radius:16px;padding:14px;box-shadow:var(--shadow)}
+
+.search{display:flex;gap:10px;margin-bottom:12px}
+input[type="text"],textarea,select{
+  width:100%;background:#0f1426;border:1px solid var(--border);color:var(--text);
+  padding:10px 12px;border-radius:12px;outline:none;
+}
+textarea{min-height:100px;resize:vertical}
+
+.grid-objects{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px}
+.card-object{
+  background:linear-gradient(180deg,#171c31,#11172b);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:16px;min-height:120px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;box-shadow:var(--shadow)
+}
+.card-object:hover{border-color:#2a355e}
+.card-object .title{font-size:18px;font-weight:800;margin-bottom:6px}
+.card-object .meta{display:flex;gap:8px;align-items:center;color:#c7ceff}
+
+.table-wrap{overflow:auto;max-height:70vh;border:1px solid var(--border);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{position:sticky;top:0;background:#151a2c;border-bottom:1px solid var(--border);padding:10px;text-align:left}
+tbody td{border-bottom:1px solid #0e1325;padding:8px;vertical-align:top}
+
+.kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;font-size:12px;padding:2px 6px;border:1px solid #2a3257;border-radius:6px;background:#0e1430}
+.footer{margin-top:14px;color:var(--muted);font-size:12px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.hidden{display:none}
+.modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;justify-content:center;padding:20px;z-index:20}
+.modal{max-width:760px;width:100%;background:#11172b;border:1px solid var(--border);border-radius:16px;padding:16px;box-shadow:var(--shadow)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.modal-actions{display:flex;gap:8px}
+.small{font-size:12px;color:var(--muted)}
+hr{border:0;border-top:1px solid var(--border);margin:12px 0}
+.install-hint{border:1px dashed #31407a;padding:10px;border-radius:12px;margin-top:8px}
+.badge{padding:4px 8px;border-radius:999px;background:#1b2240;border:1px solid #2b3560;font-size:12px;color:#c7ceff}
